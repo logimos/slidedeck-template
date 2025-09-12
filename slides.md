@@ -150,17 +150,26 @@ layout: default
 
 <ContentSlide title="Key Insights & Recommendations" subtitle="Strategic guidance for next steps">
   <div class="space-y-6">
-    <StepExplain type="success" title="Strengths">
-      Strong budget utilization and high citizen satisfaction scores indicate effective service delivery and resource management.
-    </StepExplain>
+    <div class="callout-success">
+      <strong class="text-green-700 dark:text-green-400">Strengths</strong>
+      <div class="text-gray-600 dark:text-gray-300 mt-2">
+        Strong budget utilization and high citizen satisfaction scores indicate effective service delivery and resource management.
+      </div>
+    </div>
     
-    <StepExplain type="warning" title="Areas for Improvement">
-      Project completion rates have decreased slightly, suggesting potential resource allocation challenges that need attention.
-    </StepExplain>
+    <div class="callout-warning">
+      <strong class="text-yellow-700 dark:text-yellow-400">Areas for Improvement</strong>
+      <div class="text-gray-600 dark:text-gray-300 mt-2">
+        Project completion rates have decreased slightly, suggesting potential resource allocation challenges that need attention.
+      </div>
+    </div>
     
-    <StepExplain type="info" title="Recommendations">
-      Focus on streamlining project management processes and consider additional training for project teams to improve completion rates.
-    </StepExplain>
+    <div class="callout">
+      <strong class="text-blue-700 dark:text-blue-400">Recommendations</strong>
+      <div class="text-gray-600 dark:text-gray-300 mt-2">
+        Focus on streamlining project management processes and consider additional training for project teams to improve completion rates.
+      </div>
+    </div>
   </div>
 </ContentSlide>
 
