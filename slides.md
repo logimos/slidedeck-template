@@ -156,14 +156,12 @@ layout: default
         Strong budget utilization and high citizen satisfaction scores indicate effective service delivery and resource management.
       </div>
     </div>
-    
     <div class="callout-warning">
       <strong class="text-yellow-700 dark:text-yellow-400">Areas for Improvement</strong>
       <div class="text-gray-600 dark:text-gray-300 mt-2">
         Project completion rates have decreased slightly, suggesting potential resource allocation challenges that need attention.
       </div>
     </div>
-    
     <div class="callout">
       <strong class="text-blue-700 dark:text-blue-400">Recommendations</strong>
       <div class="text-gray-600 dark:text-gray-300 mt-2">
@@ -251,6 +249,55 @@ layout: default
     <h2 class="text-2xl font-light text-gray-900 dark:text-gray-100 mb-3">Questions & Discussion</h2>
     <p class="text-gray-600 dark:text-gray-400">We welcome your questions and feedback on this presentation.</p>
   </div>
+</ContentSlide>
+
+---
+layout: default
+---
+
+<ContentSlide title="Code Walkthrough Example" subtitle="Interactive code exploration" :show-header="false">
+  <CodeWalkthrough
+    :show-title="false"
+    title="Vue Component Structure"
+    language="typescript"
+    code-file="/snippets/vue-component-example.txt"
+    :blocks="[
+      {
+        id: 'props',
+        startLine: 3,
+        endLine: 6,
+        title: 'TypeScript Props Interface',
+        description: 'Define the component props with TypeScript for type safety and better developer experience.',
+        highlightColor: 'blue'
+      },
+      {
+        id: 'reactive',
+        startLine: 8,
+        endLine: 8,
+        title: 'Reactive State',
+        description: 'Use ref() to create reactive state that will trigger re-renders when changed.',
+        highlightColor: 'green'
+      },
+      {
+        id: 'computed',
+        startLine: 10,
+        endLine: 14,
+        title: 'Computed Properties',
+        description: 'Computed properties automatically update when their dependencies change, perfect for derived state.',
+        highlightColor: 'yellow'
+      },
+      {
+        id: 'template',
+        startLine: 18,
+        endLine: 30,
+        title: 'Template with Directives',
+        description: 'Vue template syntax with v-model, v-for, and event handling for reactive UI.',
+        highlightColor: 'purple'
+      }
+    ]"
+    :auto-advance="false"
+    :auto-advance-delay="4000"
+  />
 </ContentSlide>
 
 ---

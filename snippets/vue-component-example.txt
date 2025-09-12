@@ -1,0 +1,15 @@
+import { ref, computed } from 'vue'
+
+interface Props {
+  title: string
+  items: string[]
+}
+
+const props = defineProps<Props>()
+const selectedItem = ref('')
+
+const filteredItems = computed(() => {
+  return props.items.filter(item => 
+    item.toLowerCase().includes(selectedItem.value.toLowerCase())
+  )
+})

@@ -4,13 +4,15 @@ interface Props {
   subtitle?: string
   layout?: 'single' | 'two-column' | 'three-column'
   showProgress?: boolean
+  showHeader?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   title: '',
   subtitle: '',
   layout: 'single',
-  showProgress: true
+  showProgress: true,
+  showHeader: true
 })
 
 const layoutClasses = {
@@ -23,7 +25,7 @@ const layoutClasses = {
 <template>
   <div class="h-full flex flex-col bg-white dark:bg-gray-900">
     <!-- Header -->
-    <div v-if="props.title || props.subtitle" class="mb-12">
+    <div v-if="props.showHeader && (props.title || props.subtitle)" class="mb-12">
       <h1 v-if="props.title" class="text-4xl font-light text-gray-900 dark:text-white mb-4 tracking-tight">{{ props.title }}</h1>
       <h2 v-if="props.subtitle" class="text-lg text-gray-700 dark:text-gray-200 font-light tracking-wide">{{ props.subtitle }}</h2>
     </div>
