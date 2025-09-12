@@ -189,33 +189,31 @@ layout: default
 ---
 
 <ContentSlide title="Action Plan" subtitle="Immediate next steps and timeline">
-  <div class="space-y-4">
+  <div class="space-y-3">
     <div class="card">
-      <div class="flex items-center space-x-4">
-        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold">1</div>
+      <div class="flex items-center space-x-3">
+        <div class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
         <div>
-          <h3 class="font-semibold text-primary">Review Project Management Processes</h3>
-          <p class="text-muted text-sm">Timeline: 2 weeks</p>
+          <h3 class="font-semibold text-blue-700 dark:text-blue-300 text-sm">Review Project Management Processes</h3>
+          <p class="text-gray-600 dark:text-gray-400 text-xs">Timeline: 2 weeks</p>
+        </div>
+      </div>
+    </div> 
+    <div class="card">
+      <div class="flex items-center space-x-3">
+        <div class="w-6 h-6 bg-gray-600 text-white rounded-full flex items-center justify-center font-bold text-sm">2</div>
+        <div>
+          <h3 class="font-semibold text-blue-700 dark:text-blue-300 text-sm">Implement Training Program</h3>
+          <p class="text-gray-600 dark:text-gray-400 text-xs">Timeline: 4 weeks</p>
         </div>
       </div>
     </div>
-    
     <div class="card">
-      <div class="flex items-center space-x-4">
-        <div class="w-8 h-8 bg-secondary text-white rounded-full flex items-center justify-center font-bold">2</div>
+      <div class="flex items-center space-x-3">
+        <div class="w-6 h-6 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-sm">3</div>
         <div>
-          <h3 class="font-semibold text-primary">Implement Training Program</h3>
-          <p class="text-muted text-sm">Timeline: 4 weeks</p>
-        </div>
-      </div>
-    </div>
-    
-    <div class="card">
-      <div class="flex items-center space-x-4">
-        <div class="w-8 h-8 bg-success text-white rounded-full flex items-center justify-center font-bold">3</div>
-        <div>
-          <h3 class="font-semibold text-primary">Monitor Performance Metrics</h3>
-          <p class="text-muted text-sm">Timeline: Ongoing</p>
+          <h3 class="font-semibold text-blue-700 dark:text-blue-300 text-sm">Monitor Performance Metrics</h3>
+          <p class="text-gray-600 dark:text-gray-400 text-xs">Timeline: Ongoing</p>
         </div>
       </div>
     </div>
@@ -227,19 +225,17 @@ layout: default
 ---
 
 <ContentSlide title="Progress Tracking" subtitle="Current implementation status">
-  <div class="space-y-6">
+  <div class="space-y-4">
     <div>
-      <h3 class="heading-sm mb-4">Overall Project Progress</h3>
+      <h3 class="text-lg font-light text-gray-900 dark:text-gray-100 mb-2">Overall Project Progress</h3>
       <ProgressIndicator :current="3" :total="5" color="primary" />
     </div>
-    
     <div>
-      <h3 class="heading-sm mb-4">Budget Utilization</h3>
-      <ProgressIndicator :current="87" :total="100" color="success" />
+      <h3 class="text-lg font-light text-gray-900 dark:text-gray-100 mb-2">Budget Utilization</h3>
+      <ProgressIndicator :current="23" :total="50" color="success" />
     </div>
-    
     <div>
-      <h3 class="heading-sm mb-4">Team Training Completion</h3>
+      <h3 class="text-lg font-light text-gray-900 dark:text-gray-100 mb-2">Team Training Completion</h3>
       <ProgressIndicator :current="65" :total="100" color="warning" />
     </div>
   </div>
@@ -250,10 +246,10 @@ layout: default
 ---
 
 <ContentSlide title="Questions & Discussion" subtitle="Open floor for questions and feedback">
-  <div class="text-center py-12">
-    <div class="text-6xl mb-6">❓</div>
-    <h2 class="heading-lg mb-4">Questions & Discussion</h2>
-    <p class="text-muted text-lg">We welcome your questions and feedback on this presentation.</p>
+  <div class="text-center py-8">
+    <div class="text-5xl mb-4">❓</div>
+    <h2 class="text-2xl font-light text-gray-900 dark:text-gray-100 mb-3">Questions & Discussion</h2>
+    <p class="text-gray-600 dark:text-gray-400">We welcome your questions and feedback on this presentation.</p>
   </div>
 </ContentSlide>
 
@@ -262,21 +258,20 @@ layout: default
 ---
 
 <ContentSlide title="Thank You" subtitle="Contact information and next steps">
-  <div class="text-center py-12">
-    <div class="text-6xl mb-6">🙏</div>
-    <h2 class="heading-lg mb-4">Thank You</h2>
-    <p class="text-muted text-lg mb-6">For your time and attention today.</p>
-    
-    <div class="grid-2 max-w-2xl mx-auto">
+  <div class="text-center py-6">
+    <div class="text-5xl mb-4">🙏</div>
+    <h2 class="text-2xl font-light text-gray-900 dark:text-gray-100 mb-3">Thank You</h2>
+    <p class="text-gray-600 dark:text-gray-400 mb-4">For your time and attention today.</p>
+    <div class="grid-2 max-w-2xl mx-auto gap-4">
       <div class="card">
-        <h3 class="font-semibold text-primary mb-2">Contact Information</h3>
-        <p class="text-muted">your.email@organization.gov</p>
-        <p class="text-muted">(555) 123-4567</p>
+        <h3 class="font-semibold text-blue-700 dark:text-blue-300 mb-2 text-sm">Contact Information</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">your.email@organization.gov</p>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">(555) 123-4567</p>
       </div>
       <div class="card">
-        <h3 class="font-semibold text-primary mb-2">Follow-up</h3>
-        <p class="text-muted">Next meeting: TBD</p>
-        <p class="text-muted">Action items: 3</p>
+        <h3 class="font-semibold text-blue-700 dark:text-blue-300 mb-2 text-sm">Follow-up</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Next meeting: TBD</p>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Action items: 3</p>
       </div>
     </div>
   </div>

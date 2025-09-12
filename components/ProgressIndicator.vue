@@ -60,16 +60,16 @@ const sizeClasses = {
     </div>
 
     <!-- Steps Indicator -->
-    <div v-if="props.showSteps" class="flex justify-between items-center mt-2">
-      <span class="text-sm text-muted">
+    <div v-if="props.showSteps" class="flex justify-between items-center mt-1">
+      <span class="text-xs text-gray-600 dark:text-gray-400">
         Step {{ props.current }} of {{ props.total }}
       </span>
       <div class="flex space-x-1">
         <div 
           v-for="step in props.total" 
           :key="step"
-          class="w-2 h-2 rounded-full transition-colors duration-300"
-          :class="step <= props.current ? colorClasses[props.color] : 'bg-gray-300'"
+          class="w-1.5 h-1.5 rounded-full transition-colors duration-300"
+          :class="step <= props.current ? colorClasses[props.color] : 'bg-gray-300 dark:bg-gray-600'"
         ></div>
       </div>
     </div>
