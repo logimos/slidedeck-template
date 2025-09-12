@@ -1,644 +1,274 @@
 ---
-# You can also start simply with 'default'
-theme: seriph
-monaco: true
-css: unocss
-# random image from a curated Unsplash collection by Anthony
-# like them? see https://unsplash.com/collections/94734566/slidev
-background: https://cover.sli.dev
-# some information about your slides (markdown enabled)
-title: Welcome to Slidev
-info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
-# apply unocss classes to the current slide
-class: text-center
-# https://sli.dev/features/drawing
-drawings:
-  persist: false
-# slide transition: https://sli.dev/guide/animations.html#slide-transitions
-transition: slide-left
-# enable MDC Syntax: https://sli.dev/features/mdc
-mdc: true
-# open graph
-seoMeta:
-  # By default, Slidev will use ./og-image.png if it exists,
-  # or generate one from the first slide if not found.
-  ogImage: auto
-  # ogImage: https://cover.sli.dev
+# Professional Governmental Presentation Template
+subtitle: A comprehensive template for governmental presentations
+author: Your Name
+date: 2024-01-15
+layout: cover
+class: text-left
 ---
 
-# Welcome to Slidev
-
-Presentation slides for developers
-
-<h1 class="h1-box">ddd</h1>
-<div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10">
-  Press Space for next page <carbon:arrow-right />
-</div>
-
-<div class="abs-br m-6 text-xl">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="slidev-icon-btn">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" class="slidev-icon-btn">
-    <carbon:logo-github />
-  </a>
-</div>
-
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
-
----
-transition: fade-out
----
-
-# What is Slidev?
-
-Slidev is a slides maker and presenter designed for developers, consist of the following features
-
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - themes can be shared and re-used as npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embed Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export to PDF, PPTX, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - virtually anything that's possible on a webpage is possible in Slidev
-<br>
-<br>
-
-Read more about [Why Slidev?](https://sli.dev/guide/why)
-
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/features/slide-scope-style
--->
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
-<!--
-Here is another comment.
--->
-
----
-transition: slide-up
-level: 2
----
-
-# Navigation
-
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/ui#navigation-bar)
-
-## Keyboard Shortcuts
-
-|                                                     |                             |
-| --------------------------------------------------- | --------------------------- |
-| <kbd>right</kbd> / <kbd>space</kbd>                 | next animation or slide     |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd>                                       | previous slide              |
-| <kbd>down</kbd>                                     | next slide                  |
-
-<!-- https://sli.dev/guide/animations.html#click-animation -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-  alt=""
+<TitleSlide 
+  title="Professional Governmental Presentation Template"
+  subtitle="A comprehensive template for governmental presentations"
+  author="Your Name"
+  organization="Your Organization"
+  date="2024-01-15"
 />
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
 
 ---
-layout: two-cols
-layoutClass: gap-16
+layout: section
 ---
 
-# Table of contents
-
-You can use the `Toc` component to generate a table of contents for your slides:
-
-```html
-<Toc minDepth="1" maxDepth="1" />
-```
-
-The title will be inferred from your slide content, or you can override it with `title` and `level` in your frontmatter.
-
-::right::
-
-<Toc text-sm minDepth="1" maxDepth="2" />
+<SectionSlide 
+  title="Executive Summary"
+  subtitle="Key findings and recommendations"
+  :section-number="1"
+  :total-sections="6"
+/>
 
 ---
-layout: image-right
-image: https://cover.sli.dev
+layout: default
 ---
 
-# Code
-
-Use code snippets and get the highlighting directly, and even types hover!
-
-```ts [filename-example.ts] {all|4|6|6-7|9|all} twoslash
-// TwoSlash enables TypeScript hover information
-// and errors in markdown code blocks
-// More at https://shiki.style/packages/twoslash
-import { computed, ref } from 'vue'
-
-const count = ref(0)
-const doubled = computed(() => count.value * 2)
-
-doubled.value = 2
-```
-
-<arrow v-click="[4, 5]" x1="350" y1="310" x2="195" y2="342" color="#953" width="2" arrowSize="1" />
-
-<!-- This allow you to embed external code blocks -->
-<<< @/snippets/external.ts#snippet
-
-<!-- Footer -->
-
-[Learn more](https://sli.dev/features/line-highlighting)
-
-<!-- Inline style -->
-<style>
-.footnotes-sep {
-  @apply mt-5 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
-
-<!--
-Notes can also sync with clicks
-
-[click] This will be highlighted after the first click
-
-[click] Highlighted with `count = ref(0)`
-
-[click:3] Last click (skip two clicks)
--->
-
----
-level: 2
----
-
-# Shiki Magic Move
-
-Powered by [shiki-magic-move](https://shiki-magic-move.netlify.app/), Slidev supports animations across multiple code snippets.
-
-Add multiple code blocks and wrap them with <code>````md magic-move</code> (four backticks) to enable the magic move. For example:
-
-````md magic-move {lines: true}
-```ts {*|2|*}
-// step 1
-const author = reactive({
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-})
-```
-
-```ts {*|1-2|3-4|3-4,8}
-// step 2
-export default {
-  data() {
-    return {
-      author: {
-        name: 'John Doe',
-        books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
-        ]
-      }
-    }
-  }
-}
-```
-
-```ts
-// step 3
-export default {
-  data: () => ({
-    author: {
-      name: 'John Doe',
-      books: [
-        'Vue 2 - Advanced Guide',
-        'Vue 3 - Basic Guide',
-        'Vue 4 - The Mystery'
-      ]
-    }
-  })
-}
-```
-
-Non-code blocks are ignored.
-
-```vue
-<!-- step 4 -->
-<script setup>
-const author = {
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-}
-</script>
-```
-````
-
----
-
-# Components
-
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
-
-<!--
-Presenter note with **bold**, *italic*, and ~~striked~~ text.
-
-Also, HTML elements are valid:
-<div class="flex w-full">
-  <span style="flex-grow: 1;">Left content</span>
-  <span>Right content</span>
-</div>
--->
-
----
-class: px-20
----
-
-# Themes
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/guide/theme-addon#use-theme) and
-check out the [Awesome Themes Gallery](https://sli.dev/resources/theme-gallery).
-
----
-
-# Clicks Animations
-
-You can add `v-click` to elements to add a click animation.
-
-<div v-click>
-
-This shows up when you click the slide:
-
-```html
-<div v-click>This shows up when you click the slide.</div>
-```
-
-</div>
-
-<br>
-
-<v-click>
-
-The <span v-mark.red="3"><code>v-mark</code> directive</span>
-also allows you to add
-<span v-mark.circle.orange="4">inline marks</span>
-, powered by [Rough Notation](https://roughnotation.com/):
-
-```html
-<span v-mark.underline.orange>inline markers</span>
-```
-
-</v-click>
-
-<div mt-20 v-click>
-
-[Learn more](https://sli.dev/guide/animations#click-animation)
-
-</div>
-
----
-
-# Motions
-
-Motion animations are powered by [@vueuse/motion](https://motion.vueuse.org/), triggered by `v-motion` directive.
-
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }"
-  :click-3="{ x: 80 }"
-  :leave="{ x: 1000 }"
->
-  Slidev
-</div>
-```
-
-<div class="w-60 relative">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-square.png"
-      alt=""
+<ContentSlide title="Key Performance Indicators" subtitle="Current status and trends">
+  <div class="grid-3">
+    <StatsCard 
+      title="Budget Utilization"
+      :value="87"
+      unit="%"
+      :change="5.2"
+      change-type="increase"
+      icon="💰"
+      color="primary"
     />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-circle.png"
-      alt=""
+    <StatsCard 
+      title="Project Completion"
+      :value="23"
+      unit="projects"
+      :change="-2.1"
+      change-type="decrease"
+      icon="✅"
+      color="success"
     />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-triangle.png"
-      alt=""
+    <StatsCard 
+      title="Citizen Satisfaction"
+      :value="4.2"
+      unit="/5.0"
+      :change="0.3"
+      change-type="increase"
+      icon="😊"
+      color="secondary"
     />
   </div>
+</ContentSlide>
 
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
+---
+layout: default
+---
+
+<ContentSlide title="Implementation Timeline" subtitle="Project milestones and deadlines">
+  <Timeline 
+    orientation="horizontal"
+    :items="[
+      { date: 'Q1 2024', title: 'Planning Phase', description: 'Requirements gathering and analysis', status: 'completed', icon: '📋' },
+      { date: 'Q2 2024', title: 'Development', description: 'Core system development', status: 'current', icon: '🔧' },
+      { date: 'Q3 2024', title: 'Testing', description: 'Quality assurance and testing', status: 'upcoming', icon: '🧪' },
+      { date: 'Q4 2024', title: 'Deployment', description: 'Production rollout', status: 'upcoming', icon: '🚀' }
+    ]"
+  />
+</ContentSlide>
+
+---
+layout: default
+---
+
+<ContentSlide title="Process Overview" subtitle="Step-by-step implementation process">
+  <ProcessFlow 
+    title="Digital Transformation Process"
+    :steps="[
+      { id: '1', title: 'Assessment', description: 'Current state analysis', status: 'completed', icon: '🔍' },
+      { id: '2', title: 'Planning', description: 'Strategic roadmap', status: 'completed', icon: '📊' },
+      { id: '3', title: 'Implementation', description: 'System deployment', status: 'current', icon: '⚙️' },
+      { id: '4', title: 'Monitoring', description: 'Performance tracking', status: 'upcoming', icon: '📈' }
+    ]"
+  />
+</ContentSlide>
+
+---
+layout: default
+---
+
+<ContentSlide title="Budget Analysis" subtitle="Financial breakdown by department">
+  <DataTable 
+    title="Department Budget Allocation"
+    :columns="[
+      { key: 'department', title: 'Department', width: '30%' },
+      { key: 'allocated', title: 'Allocated', width: '20%', align: 'right' },
+      { key: 'spent', title: 'Spent', width: '20%', align: 'right' },
+      { key: 'remaining', title: 'Remaining', width: '20%', align: 'right' },
+      { key: 'utilization', title: 'Utilization', width: '10%', align: 'center' }
+    ]"
+    :data="[
+      { department: 'Public Works', allocated: '$2.5M', spent: '$2.1M', remaining: '$400K', utilization: '84%' },
+      { department: 'Health Services', allocated: '$1.8M', spent: '$1.6M', remaining: '$200K', utilization: '89%' },
+      { department: 'Education', allocated: '$3.2M', spent: '$2.8M', remaining: '$400K', utilization: '88%' },
+      { department: 'Public Safety', allocated: '$2.1M', spent: '$1.9M', remaining: '$200K', utilization: '90%' }
+    ]"
+  />
+</ContentSlide>
+
+---
+layout: default
+---
+
+<ContentSlide title="Performance Comparison" subtitle="Year-over-year analysis">
+  <div class="grid-2">
+    <ComparisonCard 
+      title="Service Delivery Metrics"
+      :items="[
+        { label: 'Response Time', value: 2.3, unit: 'days', change: -15, changeType: 'increase' },
+        { label: 'Customer Satisfaction', value: 4.1, unit: '/5.0', change: 8, changeType: 'increase' },
+        { label: 'Processing Time', value: 5.7, unit: 'hours', change: -22, changeType: 'increase' }
+      ]"
+      :show-chart="true"
+    />
+    <ComparisonCard 
+      title="Operational Efficiency"
+      :items="[
+        { label: 'Cost per Transaction', value: 12.50, unit: '$', change: -18, changeType: 'increase' },
+        { label: 'Error Rate', value: 0.8, unit: '%', change: -35, changeType: 'increase' },
+        { label: 'Automation Level', value: 73, unit: '%', change: 12, changeType: 'increase' }
+      ]"
+      :show-chart="true"
+    />
   </div>
-</div>
-
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 30, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn more](https://sli.dev/guide/animations.html#motion)
-
-</div>
+</ContentSlide>
 
 ---
-
-# LaTeX
-
-LaTeX is supported out-of-box. Powered by [KaTeX](https://katex.org/).
-
-<div h-3 />
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$ {1|3|all}
-\begin{aligned}
-\nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0} \\
-\nabla \cdot \vec{B} &= 0 \\
-\nabla \times \vec{E} &= -\frac{\partial\vec{B}}{\partial t} \\
-\nabla \times \vec{B} &= \mu_0\vec{J} + \mu_0\varepsilon_0\frac{\partial\vec{E}}{\partial t}
-\end{aligned}
-$$
-
-[Learn more](https://sli.dev/features/latex)
-
+layout: default
 ---
 
-# Diagrams
-
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
-
-<div class="grid grid-cols-4 gap-5 pt-4 -mb-6">
-
-```mermaid {scale: 0.5, alt: 'A simple sequence diagram'}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
-
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-```mermaid
-mindmap
-  root((mindmap))
-    Origins
-      Long history
-      ::icon(fa fa-book)
-      Popularisation
-        British popular psychology author Tony Buzan
-    Research
-      On effectiveness<br/>and features
-      On Automatic creation
-        Uses
-            Creative techniques
-            Strategic planning
-            Argument mapping
-    Tools
-      Pen and paper
-      Mermaid
-```
-
-```plantuml {scale: 0.7}
-@startuml
-
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
-
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
-
-cloud {
-  [Example 1]
-}
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
-```
-
-</div>
-
-Learn more: [Mermaid Diagrams](https://sli.dev/features/mermaid) and [PlantUML Diagrams](https://sli.dev/features/plantuml)
-
----
-foo: bar
-dragPos:
-  square: 691,32,167,_,-16
----
-
-# Draggable Elements
-
-Double-click on the draggable elements to edit their positions.
-
-<br>
-
-###### Directive Usage
-
-```md
-<img v-drag="'square'" src="https://sli.dev/logo.png">
-```
-
-<br>
-
-###### Component Usage
-
-```md
-<v-drag text-3xl>
-  <div class="i-carbon:arrow-up" />
-  Use the `v-drag` component to have a draggable container!
-</v-drag>
-```
-
-<v-drag pos="663,206,261,_,-15">
-  <div text-center text-3xl border border-main rounded>
-    Double-click me!
+<ContentSlide title="Key Insights & Recommendations" subtitle="Strategic guidance for next steps">
+  <div class="space-y-6">
+    <StepExplain type="success" title="Strengths">
+      Strong budget utilization and high citizen satisfaction scores indicate effective service delivery and resource management.
+    </StepExplain>
+    
+    <StepExplain type="warning" title="Areas for Improvement">
+      Project completion rates have decreased slightly, suggesting potential resource allocation challenges that need attention.
+    </StepExplain>
+    
+    <StepExplain type="info" title="Recommendations">
+      Focus on streamlining project management processes and consider additional training for project teams to improve completion rates.
+    </StepExplain>
   </div>
-</v-drag>
-
-<img v-drag="'square'" src="https://sli.dev/logo.png">
-
-###### Draggable Arrow
-
-```md
-<v-drag-arrow two-way />
-```
-
-<v-drag-arrow pos="67,452,253,46" two-way op70 />
+</ContentSlide>
 
 ---
-src: ./pages/imported-slides.md
-hide: false
+layout: section
 ---
 
----
-
-# Monaco Editor
-
-Slidev provides built-in Monaco Editor support.
-
-Add `{monaco}` to the code block to turn it into an editor:
-
-```ts {monaco}
-import { ref } from 'vue'
-import { emptyArray } from './external'
-
-const arr = ref(emptyArray(10))
-```
-
-Use `{monaco-run}` to create an editor that can execute the code directly in the slide:
-
-```ts {monaco-run}
-import { version } from 'vue'
-import { emptyArray, sayHello } from './external'
-
-sayHello()
-console.log(`vue ${version}`)
-console.log(emptyArray<number>(10).reduce(fib => [...fib, fib.at(-1)! + fib.at(-2)!], [1, 1]))
-```
+<SectionSlide 
+  title="Next Steps"
+  subtitle="Action items and future planning"
+  :section-number="6"
+  :total-sections="6"
+/>
 
 ---
-layout: center
-class: text-center
+layout: default
 ---
 
-# Learn More
+<ContentSlide title="Action Plan" subtitle="Immediate next steps and timeline">
+  <div class="space-y-4">
+    <div class="card">
+      <div class="flex items-center space-x-4">
+        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold">1</div>
+        <div>
+          <h3 class="font-semibold text-primary">Review Project Management Processes</h3>
+          <p class="text-muted text-sm">Timeline: 2 weeks</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="flex items-center space-x-4">
+        <div class="w-8 h-8 bg-secondary text-white rounded-full flex items-center justify-center font-bold">2</div>
+        <div>
+          <h3 class="font-semibold text-primary">Implement Training Program</h3>
+          <p class="text-muted text-sm">Timeline: 4 weeks</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="flex items-center space-x-4">
+        <div class="w-8 h-8 bg-success text-white rounded-full flex items-center justify-center font-bold">3</div>
+        <div>
+          <h3 class="font-semibold text-primary">Monitor Performance Metrics</h3>
+          <p class="text-muted text-sm">Timeline: Ongoing</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ContentSlide>
 
-[Documentation](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/resources/showcases)
+---
+layout: default
+---
 
-<PoweredBySlidev mt-10 />
+<ContentSlide title="Progress Tracking" subtitle="Current implementation status">
+  <div class="space-y-6">
+    <div>
+      <h3 class="heading-sm mb-4">Overall Project Progress</h3>
+      <ProgressIndicator :current="3" :total="5" color="primary" />
+    </div>
+    
+    <div>
+      <h3 class="heading-sm mb-4">Budget Utilization</h3>
+      <ProgressIndicator :current="87" :total="100" color="success" />
+    </div>
+    
+    <div>
+      <h3 class="heading-sm mb-4">Team Training Completion</h3>
+      <ProgressIndicator :current="65" :total="100" color="warning" />
+    </div>
+  </div>
+</ContentSlide>
+
+---
+layout: default
+---
+
+<ContentSlide title="Questions & Discussion" subtitle="Open floor for questions and feedback">
+  <div class="text-center py-12">
+    <div class="text-6xl mb-6">❓</div>
+    <h2 class="heading-lg mb-4">Questions & Discussion</h2>
+    <p class="text-muted text-lg">We welcome your questions and feedback on this presentation.</p>
+  </div>
+</ContentSlide>
+
+---
+layout: default
+---
+
+<ContentSlide title="Thank You" subtitle="Contact information and next steps">
+  <div class="text-center py-12">
+    <div class="text-6xl mb-6">🙏</div>
+    <h2 class="heading-lg mb-4">Thank You</h2>
+    <p class="text-muted text-lg mb-6">For your time and attention today.</p>
+    
+    <div class="grid-2 max-w-2xl mx-auto">
+      <div class="card">
+        <h3 class="font-semibold text-primary mb-2">Contact Information</h3>
+        <p class="text-muted">your.email@organization.gov</p>
+        <p class="text-muted">(555) 123-4567</p>
+      </div>
+      <div class="card">
+        <h3 class="font-semibold text-primary mb-2">Follow-up</h3>
+        <p class="text-muted">Next meeting: TBD</p>
+        <p class="text-muted">Action items: 3</p>
+      </div>
+    </div>
+  </div>
+</ContentSlide>
