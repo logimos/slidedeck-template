@@ -42,7 +42,7 @@ const colorClasses = {
         <div class="pattern-icon text-lg flex-shrink-0">
           {{ item.icon }}
         </div>
-        <div class="pattern-content flex-1">
+        <div class="pattern-content flex-1 text-left">
           <span class="font-medium text-gray-900 dark:text-white text-sm">
             {{ item.title }}
           </span>

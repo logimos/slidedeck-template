@@ -1,75 +1,102 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-
 interface Props {
   current: number
   total: number
-  showPercentage?: boolean
-  showSteps?: boolean
-  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger'
+  showNumbers?: boolean
+  showProgressBar?: boolean
   size?: 'sm' | 'md' | 'lg'
+  color?: 'primary' | 'secondary' | 'accent'
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  showPercentage: true,
-  showSteps: true,
-  color: 'primary',
-  size: 'md'
+  showNumbers: true,
+  showProgressBar: true,
+  size: 'md',
+  color: 'primary'
 })
 
-const percentage = computed(() => Math.round((props.current / props.total) * 100))
+const sizeClasses = {
+  sm: {
+    container: 'mb-8',
+    number: 'w-6 h-6 text-xs',
+    text: 'text-xs',
+    bar: 'w-16 h-px'
+  },
+  md: {
+    container: 'mb-16',
+    number: 'w-8 h-8 text-sm',
+    text: 'text-sm',
+    bar: 'w-24 h-px'
+  },
+  lg: {
+    container: 'mb-20',
+    number: 'w-10 h-10 text-base',
+    text: 'text-base',
+    bar: 'w-32 h-px'
+  }
+}
 
 const colorClasses = {
-  primary: 'bg-blue-600',
-  secondary: 'bg-green-600',
-  success: 'bg-green-500',
-  warning: 'bg-yellow-500',
-  danger: 'bg-red-500'
+  primary: {
+    number: 'border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white',
+    text: 'text-gray-500 dark:text-gray-400',
+    bar: 'bg-gray-200 dark:bg-gray-700',
+    progress: 'bg-gray-900 dark:bg-white'
+  },
+  secondary: {
+    number: 'border-blue-300 dark:border-blue-600 text-blue-900 dark:text-blue-100',
+    text: 'text-blue-500 dark:text-blue-400',
+    bar: 'bg-blue-200 dark:bg-blue-700',
+    progress: 'bg-blue-600 dark:bg-blue-400'
+  },
+  accent: {
+    number: 'border-green-300 dark:border-green-600 text-green-900 dark:text-green-100',
+    text: 'text-green-500 dark:text-green-400',
+    bar: 'bg-green-200 dark:bg-green-700',
+    progress: 'bg-green-600 dark:bg-green-400'
+  }
 }
 
-const sizeClasses = {
-  sm: 'h-2',
-  md: 'h-3',
-  lg: 'h-4'
-}
+const progressPercentage = (props.current / props.total) * 100
 </script>
 
 <template>
-  <div class="progress-indicator">
-    <!-- Progress Bar -->
-    <div class="relative">
+  <div :class="sizeClasses[props.size].container">
+    <!-- Numbers Section -->
+    <div v-if="props.showNumbers" class="flex items-center justify-center space-x-3 mb-6">
       <div 
-        class="w-full bg-gray-200 rounded-full overflow-hidden"
-        :class="sizeClasses[props.size]"
+        class="border flex items-center justify-center font-light"
+        :class="[
+          sizeClasses[props.size].number,
+          colorClasses[props.color].number
+        ]"
       >
-        <div 
-          class="h-full transition-all duration-500 ease-out rounded-full"
-          :class="colorClasses[props.color]"
-          :style="{ width: `${percentage}%` }"
-        ></div>
+        {{ props.current }}
       </div>
-      
-      <!-- Percentage Text -->
       <div 
-        v-if="props.showPercentage" 
-        class="absolute inset-0 flex items-center justify-center text-xs font-medium text-white"
-        :class="{ 'text-gray-600': percentage < 20 }"
+        class="font-light"
+        :class="[
+          sizeClasses[props.size].text,
+          colorClasses[props.color].text
+        ]"
       >
-        {{ percentage }}%
+        of {{ props.total }}
       </div>
     </div>
 
-    <!-- Steps Indicator -->
-    <div v-if="props.showSteps" class="flex justify-between items-center mt-1">
-      <span class="text-xs text-gray-600 dark:text-gray-400">
-        Step {{ props.current }} of {{ props.total }}
-      </span>
-      <div class="flex space-x-1">
+    <!-- Progress Bar Section -->
+    <div v-if="props.showProgressBar" class="flex justify-center">
+      <div 
+        class="transition-all duration-500 ease-out"
+        :class="[
+          sizeClasses[props.size].bar,
+          colorClasses[props.color].bar
+        ]"
+      >
         <div 
-          v-for="step in props.total" 
-          :key="step"
-          class="w-1.5 h-1.5 rounded-full transition-colors duration-300"
-          :class="step <= props.current ? colorClasses[props.color] : 'bg-gray-300 dark:bg-gray-600'"
+          class="h-full transition-all duration-500 ease-out"
+          :class="colorClasses[props.color].progress"
+          :style="{ width: `${progressPercentage}%` }"
         ></div>
       </div>
     </div>
@@ -77,14 +104,15 @@ const sizeClasses = {
 </template>
 
 <style scoped>
+/* Optional: Add subtle animation on mount */
 .progress-indicator {
-  animation: slideInFromTop 0.4s ease-out;
+  animation: fadeInUp 0.6s ease-out;
 }
 
-@keyframes slideInFromTop {
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
