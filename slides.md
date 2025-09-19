@@ -297,11 +297,11 @@ layout: default
   <ComparisonCard 
     title="Cats vs Dogs: Key Metrics"
     :items="[
-      { label: 'Independence', value: 90, change: 30, unit: '%', changeType = 'increase' },
-      { label: 'Loyalty', value: 70, change: 10, unit: '%', changeType = 'increase' },
-      { label: 'Energy Level', value: 40, change: 80, unit: '%', changeType = 'increase' },
-      { label: 'Maintenance', value: 60, change: 75, unit: '%', changeType = 'increase' },
-      { label: 'Affection', value: 65, change: 90, unit: '%', changeType = 'increase' }
+      { label: 'Independence', value: 90, change: 30, unit: '%', changeType: 'increase' },
+      { label: 'Loyalty', value: 70, change: 10, unit: '%', changeType: 'increase' },
+      { label: 'Energy Level', value: 40, change: 80, unit: '%', changeType: 'increase' },
+      { label: 'Maintenance', value: 60, change: 75, unit: '%', changeType: 'increase' },
+      { label: 'Affection', value: 65, change: 90, unit: '%', changeType: 'increase' }
     ]"
     :show-chart="true"
     chart-type="bar"
@@ -446,49 +446,10 @@ layout: default
 layout: default
 ---
 
-<ContentSlide title="Pet Care Code Walkthrough">
+<UltraCompactSlide title="Pet Care Code Walkthrough">
   <CodeWalkthrough 
-    :code="`// Pet Care Service Implementation
-class PetCareService {
-  private healthMonitor: HealthMonitor;
-  private feedingSystem: FeedingSystem;
-  private activityTracker: ActivityTracker;
-
-  constructor() {
-    this.healthMonitor = new HealthMonitor();
-    this.feedingSystem = new FeedingSystem();
-    this.activityTracker = new ActivityTracker();
-  }
-
-  async checkPetHealth(petId: string): Promise<HealthStatus> {
-    try {
-      const healthData = await this.healthMonitor.getHealthData(petId);
-      const feedingData = await this.feedingSystem.getFeedingHistory(petId);
-      const activityData = await this.activityTracker.getActivityData(petId);
-      
-      return this.analyzeHealthStatus(healthData, feedingData, activityData);
-    } catch (error) {
-      console.error('Health check failed:', error);
-      throw new PetCareError('Unable to check pet health');
-    }
-  }
-
-  private analyzeHealthStatus(
-    health: HealthData, 
-    feeding: FeedingData, 
-    activity: ActivityData
-  ): HealthStatus {
-    const score = this.calculateHealthScore(health, feeding, activity);
-    return {
-      score,
-      status: score > 80 ? 'excellent' : score > 60 ? 'good' : 'needs_attention',
-      recommendations: this.generateRecommendations(health, feeding, activity)
-    };
-  }
-}`"
+    :code="'// Pet Care Service Implementation\nclass PetCareService {\n  private healthMonitor: HealthMonitor;\n  private feedingSystem: FeedingSystem;\n  private activityTracker: ActivityTracker;\n\n  constructor() {\n    this.healthMonitor = new HealthMonitor();\n    this.feedingSystem = new FeedingSystem();\n    this.activityTracker = new ActivityTracker();\n  }\n\n  async checkPetHealth(petId: string): Promise<HealthStatus> {\n    try {\n      const healthData = await this.healthMonitor.getHealthData(petId);\n      const feedingData = await this.feedingSystem.getFeedingHistory(petId);\n      const activityData = await this.activityTracker.getActivityData(petId);\n      \n      return this.analyzeHealthStatus(healthData, feedingData, activityData);\n    } catch (error) {\n      console.error(\'Health check failed:\', error);\n      throw new PetCareError(\'Unable to check pet health\');\n    }\n  }\n\n  private analyzeHealthStatus(\n    health: HealthData, \n    feeding: FeedingData, \n    activity: ActivityData\n  ): HealthStatus {\n    const score = this.calculateHealthScore(health, feeding, activity);\n    return {\n      score,\n      status: score > 80 ? \'excellent\' : score > 60 ? \'good\' : \'needs_attention\',\n      recommendations: this.generateRecommendations(health, feeding, activity)\n    };\n  }\n}'"
     language="typescript"
-    title="Pet Care Service Code"
-    :show-title="true"
     :blocks="[
       { id: '1', startLine: 1, endLine: 8, title: 'Service Setup', description: 'Initialize pet care components', highlightColor: 'blue' },
       { id: '2', startLine: 10, endLine: 20, title: 'Health Check', description: 'Main health monitoring method', highlightColor: 'green' },
@@ -497,7 +458,7 @@ class PetCareService {
     :auto-advance="true"
     :auto-advance-delay="4000"
   />
-</ContentSlide>
+</UltraCompactSlide>
 
 ---
 layout: section

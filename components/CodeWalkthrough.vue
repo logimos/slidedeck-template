@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
-import { $slidev, $nav } from '@slidev/client'
 
 interface CodeBlock {
   id: string
@@ -24,7 +23,6 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   language: 'typescript',
-  title: 'Code Walkthrough',
   showTitle: true,
   autoAdvance: true,
   autoAdvanceDelay: 3000
