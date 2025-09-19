@@ -5,12 +5,16 @@
   "scripts": {
     "build": "slidev build",
     "dev": "slidev --open",
-    "export": "slidev export --format pdf"
+    "export": "slidev export --format pdf",
+    "security:ci-install": "pnpm i --frozen-lockfile --ignore-scripts",
+    "security:audit": "pnpm audit --prod || true",
+    "security:scan-lockfile": "node ./scripts/security/scan-lockfile.mjs",
+    "security:scan-node-modules": "node ./scripts/security/scan-node-modules.mjs"
   },
+  "onlyBuiltDependencies": [
+  ],
   "dependencies": {
     "@slidev/cli": "^52.1.0",
-    "@slidev/theme-default": "latest",
-    "@slidev/theme-seriph": "latest",
     "mermaid": "^11.2.0",
     "monaco-editor": "^0.53.0",
     "vue": "^3.5.18"

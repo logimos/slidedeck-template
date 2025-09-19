@@ -1,0 +1,37 @@
+name: security-tripwires
+on:
+  workflow_dispatch:
+  schedule: [{ cron: "17 7 * * *" }]  # daily 07:17 UTC
+  pull_request:
+    branches: [ main ]
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 10 }
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      - name: Locked, scriptless install
+        run: pnpm i --frozen-lockfile --ignore-scripts
+      - name: Scan lockfile for flagged families
+        run: pnpm run security:scan-lockfile
+      - name: Scan node_modules for install hooks
+        run: pnpm run security:scan-node-modules
+      - name: Advisory audit (non-blocking)
+        run: pnpm run security:audit
+      - name: Open issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { context, github } = require('@actions/github');
+            const title = "Security tripwire triggered";
+            const body = `One or more security checks failed in **${context.workflow}**.\n\nRef: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const { data: issues } = await github.rest.issues.listForRepo({ ...context.repo, state: 'open', labels: 'security-tripwire' });
+            if (!issues.find(i => i.title === title)) {
+              await github.rest.issues.create({ ...context.repo, title, body, labels: ['security-tripwire'] });
+            }
